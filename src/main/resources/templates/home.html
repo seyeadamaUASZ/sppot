@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Accueil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <meta name="description" content=""/>
+  <meta name="author" content=""/>
+
+  <title>Indicateurs de performance Orbus</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css"  th:href="@{vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" th:href="@{vendor/fontawesome-free/css/all.min.css}" rel="stylesheet">
+  <link href="vendor/simple-line-icons/css/simple-line-icons.css" th:href="@{vendor/simple-line-icons/css/simple-line-icons.css}"  rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template -->
+  <link href="css/landing-page.min.css" th:href="@{css/landing-page.min.css}" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" th:href="@{css/style.css}">
+</head>
+<body>
+
+<!-- Navigation -->
+  <nav class="navbar navbar-light bg-light static-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="img/gainde.jpg" width="50" height="50" alt="" class="rounded-circle">
+        SPPO-T
+      </a>
+
+      <form>
+        <div class="form-row">
+          <div class="col-12 col-md-9 mb-2 mb-md-0">
+            <input type="text" size="50" class="form-control form-control-lg" placeholder="Mot clés...">
+          </div>
+          <div class="col-12 col-md-3">
+            <button type="submit" class="btn btn-block btn-lg btn-primary"><i class="fa fa-search"></i></button>
+          </div>
+        </div>
+      </form>
+
+      <a class="" th:href="@{/login}"><i class="fa fa-sign-in-alt"></i> Connexion</a>
+    </div>
+  </nav>
+
+  <!-- Masthead -->
+  <header class="text-center">
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+
+    <h3 class="mb-5" style="text-align:center;">Suivi des Performances et des Publications de Orbus-Temps réel (SPPO-T)</h3>
+    <div class="carousel-inner" role="listbox">
+      <!-- Slide One - Set the background image for this slide in the line below -->
+      <div class="carousel-item active" style="background-image: url('img/port.jpg')">
+        <div style="margin-top:270px;">
+          <h1 class="display-4" style="color:black; font-weight:bold;">Rechercher des documents</h1>
+          <p class="lead" style="color:black; font-weight:bold;">Vous pourrez rechercher tous les documents relatif aux indicateurs de performance</p>
+        </div>
+
+        <div class="carousel-caption d-none d-md-block">
+
+        </div>
+      </div>
+      <!-- Slide Two - Set the background image for this slide in the line below -->
+      <div class="carousel-item" style="background-image: url('img/stats.jpg')">
+        <div style="margin-top:270px;">
+          <h1 class="display-4" style="color:black; font-weight:bold;">Suivre les indicateurs de performance Orbus</h1>
+          <p class="lead" style="color:black; font-weight:bold;">Suivez en temps réel, l'évolution des indicateurs</p>
+        </div>
+        <div class="carousel-caption d-none d-md-block">
+
+        </div>
+      </div>
+      <!-- Slide Three - Set the background image for this slide in the line below -->
+      <div class="carousel-item" style="background-image: url('img/financial.jpg')">
+        <div style="margin-top:270px;">
+          <h1 class="display-4" style="color:black; font-weight:bold;">Avoir les derniers actus Orbus</h1>
+          <p class="lead" style="color:black; font-weight:bold;">Suivez toutes les actualités relatives aux Performances Orbus</p>
+        </div>
+        <div class="carousel-caption d-none d-md-block">
+
+        </div>
+      </div>
+    </div>
+
+
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+  </div>
+</header>
+
+  <!-- Icons Grid -->
+  <section class="features-icons bg-light text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+              <i class="icon-folder m-auto text-primary"></i>
+            </div>
+            <h3>Archivage</h3>
+            <p class="lead mb-0">This theme will look great on any device, no matter the size!</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+              <i class="icon-layers m-auto text-primary"></i>
+            </div>
+            <h3>Portail d'information</h3>
+            <p class="lead mb-0">Featuring the latest build of the new Bootstrap 4 framework!</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+              <i class="icon-check m-auto text-primary"></i>
+            </div>
+            <h3>Actualités</h3>
+            <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="call-to-action text-white text-center">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-9 mx-auto">
+
+        </div>
+        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-item nav-link" href="#" style="color:black;">Présentation portail</a>
+                <a class="nav-item nav-link" href="#" style="color:black;">Foire aux questions</a>
+                <a class="nav-item nav-link" href="#" style="color:black;">Contacts</a>
+                <a class="nav-item nav-link" href="#" style="color:black;">Suivi des indicateurs</a>
+              </div>
+            </div>
+         </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+          <ul class="list-inline mb-2">
+            <li class="list-inline-item">
+              <a href="#">About</a>
+            </li>
+            <li class="list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+              <a href="#">Contact</a>
+            </li>
+            <li class="list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+              <a href="#">Terms of Use</a>
+            </li>
+            <li class="list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+              <a href="#">Privacy Policy</a>
+            </li>
+          </ul>
+          <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2020. All Rights Reserved.</p>
+        </div>
+        <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item mr-3">
+              <a href="#">
+                <i class="fab fa-facebook fa-2x fa-fw"></i>
+              </a>
+            </li>
+            <li class="list-inline-item mr-3">
+              <a href="#">
+                <i class="fab fa-twitter-square fa-2x fa-fw"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="fab fa-instagram fa-2x fa-fw"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js" th:src="@{vendor/jquery/jquery.min.js}"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"  th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

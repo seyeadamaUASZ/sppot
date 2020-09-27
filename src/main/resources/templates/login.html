@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Page de Connexion</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- Bootstrap -->
+    <link href="vendor1/bootstrap/dist/css/bootstrap.min.css" th:href="@{vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="vendor1/font-awesome/css/font-awesome.min.css" th:href="@{vendor1/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="vendor1/nprogress/nprogress.css" th:href="@{vendor1/nprogress/nprogress.css}" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="vendor1/animate.css/animate.min.css" th:href="@{vendor1/animate.css/animate.min.css}" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="build/css/custom.min.css" th:href="@{build/css/custom.min.css}" rel="stylesheet">
+</head>
+<body class="login">
+    <div>
+      <a class="hiddenanchor" id="signup"></a>
+      <a class="hiddenanchor" id="signin"></a>
+
+      <div class="login_wrapper">
+        <div class="animate form login_form">
+          <section class="login_content">
+            <form th:action="@{/login}" method="post">
+              <h1>Page de Connexion</h1>
+              <div>
+                <input type="text" class="form-control" name="username" placeholder="Username" required="" />
+              </div>
+              <div>
+                <input type="password" class="form-control" name="password" placeholder="Password" required="" />
+              </div>
+              <div>
+                  <input type="submit" class="btn btn-success pull-center" value="Connectez-vous"/>  
+                  
+              </div>
+             
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
+                <p class="change_link">Nouveau ?
+                  <a href="#signup" class="to_register"> Créer un compte </a>
+                  <a class="" href="#">Mot de passe oublié ?</a>
+                </p>
+
+                <div class="clearfix"></div>
+                <br/>
+
+                <div>
+                  <h1 style="text-align:center;"><img src="img/gainde.jpg"  width="50" height="50" class="rounded-circle"/>SPPO-T</h1>
+                  <p>©2020 Gainde 2000</p>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+
+        <div id="register" class="animate form registration_form">
+          <section class="login_content">
+            <form>
+              <h1>Création Compte</h1>
+              <div>
+                <input type="text" class="form-control" placeholder="Username" required="" />
+              </div>
+              <div>
+                <input type="email" class="form-control" placeholder="Email" required="" />
+              </div>
+              <div>
+                <input type="password" class="form-control" placeholder="Password" required="" />
+              </div>
+              <div>
+                <a class="btn btn-success submit" href="index.html">S'inscrire</a>
+              </div>
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
+                <p class="change_link">Déjà membre?
+                  <a href="#signin" class="to_register"> Connectez-vous</a>
+                </p>
+
+                <div class="clearfix"></div>
+                <br />
+
+                <div>
+                  <h1 style="text-align:center;"><img src="img/gainde.jpg"  width="50" height="50" class="rounded-circle"/>SPPO-T</h1>
+                  <p>©2020 Gainde 2000</p>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
