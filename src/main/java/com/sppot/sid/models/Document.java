@@ -19,6 +19,9 @@ public class Document {
 	private Date dateFile;
 	private String motcles;
 	
+	@ManyToOne
+	private CategorieDocument categorieDocument;
+	
 	
 	public Document(String fileName, String fileType, String filedownloadURI, Date dateFile, String motcles) {
 		super();
@@ -28,14 +31,22 @@ public class Document {
 		this.dateFile = dateFile;
 		this.motcles = motcles;
 	}
+	
+	
+	public Document(String fileName, String fileType) {
+		super();
+		this.fileName = fileName;
+		this.fileType = fileType;
+	}
+
+
 	public String getMotcles() {
 		return motcles;
 	}
 	public void setMotcles(String motcles) {
 		this.motcles = motcles;
 	}
-	@ManyToOne
-	private CategorieDocument categorieDocument;
+	
 	
 	
 	public Long getId() {

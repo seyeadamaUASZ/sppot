@@ -31,10 +31,10 @@
         SPPO-T
       </a>
 
-      <form>
+      <form th:action="@{/checkresult}" method="get">
         <div class="form-row">
           <div class="col-12 col-md-9 mb-2 mb-md-0">
-            <input type="text" size="50" class="form-control form-control-lg" placeholder="Mot clés...">
+            <input type="text" size="50" class="form-control form-control-lg" name="motcles" placeholder="Mot clés...">
           </div>
           <div class="col-12 col-md-3">
             <button type="submit" class="btn btn-block btn-lg btn-primary"><i class="fa fa-search"></i></button>

@@ -20,4 +20,6 @@ public class HomeController {
     public String administrateur() {
     	return "admin";
     }
+	
+	
 }

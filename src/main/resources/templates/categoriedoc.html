@@ -3,14 +3,14 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
 <head>
 <meta charset="utf-8">
-<title>Gestion des documents liés aux indicateurs</title>
+<title>Gestion des catégories</title>
 </head>
 <body>
 <div layout:fragment="content">
 
 <div class="page-title">
               <div class="title_left">
-                <h5>Liste des documents</h5>
+                <h5>Liste des catégories</h5>
               </div>
 
               <div class="title_right">
@@ -24,9 +24,9 @@
                 </div>
               </div>
             </div>
+            
 <div class="row">
-  
-      <div class="col-md-12 col-sm-12 ">
+  <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                   <div class="x_title">
                     <h6> <i class="fa fa-user"></i> </h6>
@@ -53,22 +53,14 @@
                       <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Nom fichier</th>
-                            <th>Date d'entree</th>
-                            <th>Categorie</th>
-                            <th>Motcles</th>
-                            <th>lien telechargement</th>
+                            <th>Intitulé</th>
                             <th>Options</th>
                         </tr>
                       </thead>
                       <tbody> 
-                        <tr th:each="d: ${documents}">
-                                <td th:text="${d.id}"></td>
-                               <td th:text="${d.fileName}"></td>
-                               <td th:text="${d.dateFile}"></td>
-                                <td th:text="${d.categorieDocument.namecategorie}"></td>
-                               <td th:text="${d.motcles}"></td>
-                               <td th:text="${d.filedownloadURI}"></td>
+                        <tr th:each="c: ${categories}">
+                                <td th:text="${c.id}"></td>
+                               <td th:text="${c.namecategorie}"></td>
                                 <td>
                                     <a href="#" class="btn btn-primary act1"> <i class="fa fa-edit"></i></a> |
                                     <a href="#" class="btn btn-danger dbtn"><i class="fa fa-trash"></i></a></td>
@@ -85,7 +77,7 @@
             <div class="col-md-12 col-sm-12 ">
              <div class="x_panel">
 				<div class="x_title">
-					<h2> <i class="fa fa-edit"></i> Enregistrer/Modifier document</h2>
+					<h2> <i class="fa fa-edit"></i> Enregistrer/Modifier catégorie</h2>
 					<ul class="nav navbar-right panel_toolbox">
 						<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 						</li>
@@ -105,30 +97,17 @@
 				</div>
 				<div class="x_content">
 					<br />
-					<form  th:action="@{/uploadFile}" method="post" enctype="multipart/form-data">
+					<form  th:action="@{/saveCategorie}" method="post">
+						
 						<div class="item form-group">
-							<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Fichier<span class="required">*</span>
+							<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">intitulé <span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 ">
-								 <input type="file" class="form-control" name="file" />
-							</div>
-						</div>
-						<div class="item form-group">
-							<label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Mot clés <span class="required">*</span>
-							</label>
-							<div class="col-md-6 col-sm-6 ">
-								<input type="text" id="motcles" name="motcles" required="required"  class="form-control">
+								<input type="text" id="namecategorie" name="namecategorie" required="required"  class="form-control">
 							</div>
 						</div>
 						
-						<div class="item form-group">
-							<label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Categorie</label>
-							<div class="col-md-6 col-sm-6 ">
-								<select class="form-control app" id="nomRole" name="id">
-                                   <option th:each="c:${categories}" th:value="${c.id}" th:text="${c.namecategorie}"></option>
-                                   </select>
-							</div>
-						</div>
+				
 						<div class="ln_solid"></div>
 						<div class="item form-group">
 							<div class="col-md-6 col-sm-6 offset-md-3">
@@ -141,7 +120,9 @@
 						</form>
 					</div>
 				</div>            	
-            </div>                        
+            </div>
+            
+            
   </div>
  
 </div>
