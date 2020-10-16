@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         .permitAll()
         .and()
         .sessionManagement()
-        .invalidSessionUrl("/login");
+        .invalidSessionUrl("/");
     }
 
     

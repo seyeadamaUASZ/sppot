@@ -2,6 +2,7 @@ package com.sppot.sid.pojo;
 
 
 public class UserForm {
+	private Long id;
 	private String email;
 	private String password;
 	private String username;
@@ -10,6 +11,13 @@ public class UserForm {
 	private String prenom;
 	
 	
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getNom() {
 		return nom;
 	}

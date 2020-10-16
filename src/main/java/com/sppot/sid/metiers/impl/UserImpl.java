@@ -33,10 +33,10 @@ public class UserImpl implements IUser {
 	}
 
 	@Override
-	public User updateUser(Long id,User useru) {
+	public void updateUser(Long id,User useru) {
 		// TODO Auto-generated method stub
 		useru.setId(id);
-		return userdao.saveAndFlush(useru);
+		userdao.saveAndFlush(useru);
 	}
 
 	@Override
@@ -54,10 +54,28 @@ public class UserImpl implements IUser {
 	@Override
 	public User userLogged(HttpServletRequest request) {
 		 HttpSession session=request.getSession();
-	     SecurityContext context= (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
-	     String username=context.getAuthentication().getName();
-	     User user = userdao.findUserByUsername(username);    
-	     return user;
+		 SecurityContext context= (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
+			 if(context!=null) {
+				 String username=context.getAuthentication().getName();
+			     User user = userdao.findUserByUsername(username);
+		    	 return user; 
+			 }else {
+	    	 return null;
+	     }
+	       
+	    
+	}
+
+	@Override
+	public Integer compteUsers() {
+		// TODO Auto-generated method stub
+		return userdao.compteUser();
+	}
+
+	@Override
+	public User getUser(Long id) {
+		// TODO Auto-generated method stub
+		return userdao.findById(id).get();
 	}
 
 }

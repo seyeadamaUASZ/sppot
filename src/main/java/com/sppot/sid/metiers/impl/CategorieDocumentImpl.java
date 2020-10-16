@@ -27,4 +27,10 @@ public class CategorieDocumentImpl implements ICategorieDocument {
 		return dao.save(categorieDocument);
 	}
 
+	@Override
+	public Integer compteCategories() {
+		// TODO Auto-generated method stub
+		return dao.compteCategories();
+	}
+
 }

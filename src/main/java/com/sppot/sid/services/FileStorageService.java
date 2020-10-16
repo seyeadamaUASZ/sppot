@@ -42,7 +42,7 @@ public class FileStorageService {
  	}
   
   
-  public Document storeFile(MultipartFile file,Long id,String motcles) {
+  public Document storeFile(MultipartFile file,Long id,String motcles,boolean statusdoc) {
       // Normalize file name
       String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 
@@ -68,6 +68,12 @@ public class FileStorageService {
           doc.setMotcles(motcles);
           CategorieDocument categorie = dao.findById(id).get();
           doc.setCategorieDocument(categorie);
+          if(statusdoc==false) {
+        	  doc.setStatus("Non archivé");
+          }else {
+        	  doc.setStatus("Archivé"); 
+          }
+          doc.setStatusdoc(statusdoc);
           return repos.save(doc);
 
       } catch (IOException ex) {

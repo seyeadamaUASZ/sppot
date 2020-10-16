@@ -26,9 +26,9 @@ public class SimpleAuthenticationSuccess implements AuthenticationSuccessHandler
 
         authorities.forEach(grantedAuthority ->{
             switch (grantedAuthority.getAuthority()) {
-                case "ROLE_BAILLEUR":
+                case "ROLE_MEMBRE":
                     try {
-                        strategy.sendRedirect(httpServletRequest, httpServletResponse, "/bailleur");
+                        strategy.sendRedirect(httpServletRequest, httpServletResponse, "/");
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

@@ -1,218 +1,556 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="utf-8"/>
-<title>Accueil</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-  <meta name="description" content=""/>
-  <meta name="author" content=""/>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>SPPO-T</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css1/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css1/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css1/style.min.css" rel="stylesheet">
+    <style type="text/css">
+      html,
+      body,
+      header,
+      .carousel {
+        height: 60vh;
+      }
 
-  <title>Indicateurs de performance Orbus</title>
+      @media (max-width: 740px) {
+        html,
+        body,
+        header,
+        .carousel {
+          height: 100vh;
+        }
+      }
 
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css"  th:href="@{vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+      @media (min-width: 800px) and (max-width: 850px) {
+        html,
+        body,
+        header,
+        .carousel {
+          height: 100vh;
+        }
+      }
 
-  <!-- Custom fonts for this template -->
-  <link href="vendor/fontawesome-free/css/all.min.css" th:href="@{vendor/fontawesome-free/css/all.min.css}" rel="stylesheet">
-  <link href="vendor/simple-line-icons/css/simple-line-icons.css" th:href="@{vendor/simple-line-icons/css/simple-line-icons.css}"  rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-
-  <!-- Custom styles for this template -->
-  <link href="css/landing-page.min.css" th:href="@{css/landing-page.min.css}" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css" th:href="@{css/style.css}">
+      @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+    </style>
 </head>
+
 <body>
 
-<!-- Navigation -->
-  <nav class="navbar navbar-light bg-light static-top">
+  <!-- Navbar -->
+  <nav class="navbar fixed-top navbar-expand-lg scrolling-navbar" style="background-color: white;">
     <div class="container">
-      <a class="navbar-brand" href="#">
+
+      <!-- Brand -->
+      <a class="navbar-brand" href="#" target="_blank">
         <img src="img/gainde.jpg" width="50" height="50" alt="" class="rounded-circle">
-        SPPO-T
+         <span style="color:black; font-weight:bold;">SPPO-T</span>
       </a>
 
-      <form th:action="@{/checkresult}" method="get">
-        <div class="form-row">
-          <div class="col-12 col-md-9 mb-2 mb-md-0">
-            <input type="text" size="50" class="form-control form-control-lg" name="motcles" placeholder="Mot clés...">
-          </div>
-          <div class="col-12 col-md-3">
-            <button type="submit" class="btn btn-block btn-lg btn-primary"><i class="fa fa-search"></i></button>
-          </div>
-        </div>
-      </form>
+      <!-- Collapse -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-      <a class="" th:href="@{/login}"><i class="fa fa-sign-in-alt"></i> Connexion</a>
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!-- Left -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" th:href="@{/}">
+              <span style="color:black; font-weight:bold;">Accueil</span>
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          
+          <li class="nav-item" th:if="${logged}">
+            <a href="https://indic123.web.app/" class="nav-link" target="_blank">
+             <span style="color:black; font-weight:bold;">Monitoring des performances</span>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
+            <span style="color:black; font-weight:bold;">A propos de Orbus</span>
+            </a>
+          </li>
+
+        </ul>
+
+        <!-- Right -->
+        <ul class="navbar-nav nav-flex-icons">
+          <li class="nav-item">
+            <a th:href="@{/login}" class="btn btn-primary btn-sm">
+              <i class="fab fa-sign-in"></i>Connexion
+            </a>
+          </li>
+          
+          <li class="nav-item" th:if="${logged}">
+            <a th:href="@{/logout}" class="btn btn-danger btn-sm">
+             <span style="color:white;"> Déconnexion</span>
+            </a>
+          </li>
+          
+        </ul>
+
+      </div>
+
     </div>
   </nav>
+  <!-- Navbar -->
 
-  <!-- Masthead -->
-  <header class="text-center">
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <!--Carousel Wrapper-->
+  <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+
+    <!--Indicators-->
     <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+      <li data-target="#carousel-example-1z" data-slide-to="2"></li>
     </ol>
+    <!--/.Indicators-->
 
-    <h3 class="mb-5" style="text-align:center;">Suivi des Performances et des Publications de Orbus-Temps réel (SPPO-T)</h3>
+    <!--Slides-->
     <div class="carousel-inner" role="listbox">
-      <!-- Slide One - Set the background image for this slide in the line below -->
-      <div class="carousel-item active" style="background-image: url('img/port.jpg')">
-        <div style="margin-top:270px;">
-          <h1 class="display-4" style="color:black; font-weight:bold;">Rechercher des documents</h1>
-          <p class="lead" style="color:black; font-weight:bold;">Vous pourrez rechercher tous les documents relatif aux indicateurs de performance</p>
-        </div>
 
-        <div class="carousel-caption d-none d-md-block">
+      <!--First slide-->
+      <div class="carousel-item active">
+        <div class="view" style="background-image: url('img/financial.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            <!-- Content -->
+            <div class="text-center  mx-5 wow fadeIn" style="color:black;">
+              <h1 class="mb-4">
+                <strong>SPPO-T</strong>
+              </h1>
+              <p class="mb-4 d-none d-md-block">
+               <marquee><strong>Suivi des Performances et des Publications de Orbus-Temps réel</strong></marquee> 
+              </p>
+
+              <!--<a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start free tutorial
+                <i class="fas fa-graduation-cap ml-2"></i>
+              </a>-->
+              <form th:action="@{/checkresult}" method="get">
+              <div class="input-group no-border">
+                <input type="text" value=""  name="motcles" class="form-control" placeholder="Mot clés...">
+                <button type="submit" class="btn btn-primary btn-sm">
+                  <i class="fas fa-search"></i> chercher
+                  <div class="ripple-container"></div>
+                </button>
+              </div>
+            </form>
+            </div>
+            <!-- Content -->
+
+          </div>
+          <!-- Mask & flexbox options-->
 
         </div>
       </div>
-      <!-- Slide Two - Set the background image for this slide in the line below -->
-      <div class="carousel-item" style="background-image: url('img/stats.jpg')">
-        <div style="margin-top:270px;">
-          <h1 class="display-4" style="color:black; font-weight:bold;">Suivre les indicateurs de performance Orbus</h1>
-          <p class="lead" style="color:black; font-weight:bold;">Suivez en temps réel, l'évolution des indicateurs</p>
-        </div>
-        <div class="carousel-caption d-none d-md-block">
+      <!--/First slide-->
+
+      <!--Second slide-->
+      <!--<div class="carousel-item">
+        <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/94.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+
+          <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+
+            <div class="text-center white-text mx-5 wow fadeIn">
+              <h1 class="mb-4">
+                <strong>Learn Bootstrap 4 with MDB</strong>
+              </h1>
+
+              <p>
+                <strong>Best & free guide of responsive web design</strong>
+              </p>
+
+              <p class="mb-4 d-none d-md-block">
+                <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and written versions
+                  available. Create your own, stunning website.</strong>
+              </p>
+
+              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start free tutorial
+                <i class="fas fa-graduation-cap ml-2"></i>
+              </a>
+            </div>
+
+
+          </div>
+
 
         </div>
-      </div>
-      <!-- Slide Three - Set the background image for this slide in the line below -->
-      <div class="carousel-item" style="background-image: url('img/financial.jpg')">
-        <div style="margin-top:270px;">
-          <h1 class="display-4" style="color:black; font-weight:bold;">Avoir les derniers actus Orbus</h1>
-          <p class="lead" style="color:black; font-weight:bold;">Suivez toutes les actualités relatives aux Performances Orbus</p>
-        </div>
-        <div class="carousel-caption d-none d-md-block">
+      </div>-->
+      <!--/Second slide-->
+
+      <!--Third slide-->
+      <!--<div class="carousel-item">
+        <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/92.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+
+          <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+
+            <div class="text-center white-text mx-5 wow fadeIn">
+              <h1 class="mb-4">
+                <strong>Learn Bootstrap 4 with MDB</strong>
+              </h1>
+
+              <p>
+                <strong>Best & free guide of responsive web design</strong>
+              </p>
+
+              <p class="mb-4 d-none d-md-block">
+                <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and written versions
+                  available. Create your own, stunning website.</strong>
+              </p>
+
+              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start free tutorial
+                <i class="fas fa-graduation-cap ml-2"></i>
+              </a>
+            </div>
+
+
+          </div>
+
 
         </div>
-      </div>
+      </div>-->
+      <!--/Third slide-->
+
     </div>
 
+    <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
 
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
+
   </div>
-</header>
+  <!--/.Carousel Wrapper-->
 
-  <!-- Icons Grid -->
-  <section class="features-icons bg-light text-center">
+  <!--Main layout-->
+  <main>
     <div class="container">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-            <div class="features-icons-icon d-flex">
-              <i class="icon-folder m-auto text-primary"></i>
-            </div>
-            <h3>Archivage</h3>
-            <p class="lead mb-0">This theme will look great on any device, no matter the size!</p>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-            <div class="features-icons-icon d-flex">
-              <i class="icon-layers m-auto text-primary"></i>
-            </div>
-            <h3>Portail d'information</h3>
-            <p class="lead mb-0">Featuring the latest build of the new Bootstrap 4 framework!</p>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-            <div class="features-icons-icon d-flex">
-              <i class="icon-check m-auto text-primary"></i>
-            </div>
-            <h3>Actualités</h3>
-            <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="call-to-action text-white text-center">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-xl-9 mx-auto">
+      <!--Section: Main info-->
 
-        </div>
-        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-          <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div class="navbar-nav">
-                <a class="nav-item nav-link" href="#" style="color:black;">Présentation portail</a>
-                <a class="nav-item nav-link" href="#" style="color:black;">Foire aux questions</a>
-                <a class="nav-item nav-link" href="#" style="color:black;">Contacts</a>
-                <a class="nav-item nav-link" href="#" style="color:black;">Suivi des indicateurs</a>
+      <!--Section: Main info-->
+
+      <hr class="my-5">
+
+      <!--Section: Main features & Quick Start-->
+      <section>
+
+        <h3 class="h3 text-center mb-5">Présentation du portail</h3>
+
+        <!--Grid row-->
+        <div class="row wow fadeIn">
+
+          <!--Grid column-->
+          <div class="col-lg-6 col-md-12 px-4">
+
+            <!--First row-->
+            <div class="row">
+              <div class="col-1 mr-3">
+                <i class="fas fa-code fa-2x indigo-text"></i>
+              </div>
+              <div class="col-10">
+                <h5 class="feature-title">Bootstrap 4</h5>
+                <p class="grey-text">Thanks to MDB you can take advantage of all feature of newest Bootstrap 4.</p>
               </div>
             </div>
-         </nav>
-        </div>
-      </div>
-    </div>
-  </section>
+            <!--/First row-->
 
-  <!-- Footer -->
-  <footer class="footer bg-light">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
-          <ul class="list-inline mb-2">
-            <li class="list-inline-item">
-              <a href="#">About</a>
-            </li>
-            <li class="list-inline-item">&sdot;</li>
-            <li class="list-inline-item">
-              <a href="#">Contact</a>
-            </li>
-            <li class="list-inline-item">&sdot;</li>
-            <li class="list-inline-item">
-              <a href="#">Terms of Use</a>
-            </li>
-            <li class="list-inline-item">&sdot;</li>
-            <li class="list-inline-item">
-              <a href="#">Privacy Policy</a>
-            </li>
-          </ul>
-          <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2020. All Rights Reserved.</p>
+            <div style="height:30px"></div>
+
+            <!--Second row-->
+            <div class="row">
+              <div class="col-1 mr-3">
+                <i class="fas fa-book fa-2x blue-text"></i>
+              </div>
+              <div class="col-10">
+                <h5 class="feature-title">Detailed documentation</h5>
+                <p class="grey-text">We give you detailed user-friendly documentation at your disposal. It will help you to implement your ideas
+                  easily.
+                </p>
+              </div>
+            </div>
+            <!--/Second row-->
+
+            <div style="height:30px"></div>
+
+            <!--Third row-->
+            <div class="row">
+              <div class="col-1 mr-3">
+                <i class="fas fa-graduation-cap fa-2x cyan-text"></i>
+              </div>
+              <div class="col-10">
+                <h5 class="feature-title">Lots of tutorials</h5>
+                <p class="grey-text">We care about the development of our users. We have prepared numerous tutorials, which allow you to learn
+                  how to use MDB as well as other technologies.</p>
+              </div>
+            </div>
+            <!--/Third row-->
+
+          </div>
+          <!--/Grid column-->
+
+          <!--Grid column-->
+          <div class="col-lg-6 col-md-12">
+
+            <p class="h5 text-center mb-4">Regarder la vidéo</p>
+            <div class="embed-responsive embed-responsive-16by9">
+             <!-- <iframe class="embed-responsive-item" src="" allowfullscreen></iframe> -->
+             <video controls src="img/gainde200.mp4">Ici la description alternative</video>
+             
+            </div>
+          </div>
+          <!--/Grid column-->
+
         </div>
-        <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
-          <ul class="list-inline mb-0">
-            <li class="list-inline-item mr-3">
-              <a href="#">
-                <i class="fab fa-facebook fa-2x fa-fw"></i>
-              </a>
-            </li>
-            <li class="list-inline-item mr-3">
-              <a href="#">
-                <i class="fab fa-twitter-square fa-2x fa-fw"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
-                <i class="fab fa-instagram fa-2x fa-fw"></i>
-              </a>
-            </li>
-          </ul>
+        <!--/Grid row-->
+
+      </section>
+      <!--Section: Main features & Quick Start-->
+
+      <hr class="my-5">
+
+      <!--Section: Not enough-->
+      <section>
+
+        <h2 class="my-5 h3 text-center">Les services de SPPO-T</h2>
+
+        <!--First row-->
+        <div class="container row  features-small mb-5 mt-3 wow fadeIn">
+
+          <div class="col-md-4">
+          <div class="card">
+					<img src="img/bonne.jpg" class="card-img-top" alt="..." height="220px;">
+					<div class="card-body">
+						<h5 class="card-title">Archivage</h5>
+						<p class="card-text">Accéder à la liste des documents archivés de ORBUS</p>
+						<a th:href="@{/archive}" class="btn btn-sm btn-primary">Accéder</a>
+					</div>
+				</div>
+            <!-- <img src="assets/financement2.jpg"  alt="MDB Magazine Template displayed on iPhone" class="z-depth-0 img-fluid"> -->
+
+          </div>
+
+           <div class="col-md-4">
+          <div class="card">
+ 					<img src="img/financial.jpg" class="card-img-top" alt="...">
+ 					<div class="card-body">
+ 						<h5 class="card-title">Publications récentes</h5>
+ 						<p class="card-text">Liste des publications publications les plus récentes de ORBUS</p>
+ 						<a th:href="@{/publication}" class="btn btn-sm btn-primary">Accéder</a>
+ 					</div>
+ 				</div>
+
+          </div>
+
+
+        <div class="col-md-4">
+        <div class="card">
+        <img src="img/news.jpg" class="card-img-top" alt="..." height="220px;">
+        <div class="card-body">
+          <h5 class="card-title">Actualités</h5>
+          <p class="card-text">L'ensemble des actualités lié au performance ORBUS</p>
+          <a href="#" class="btn btn-sm btn-primary">Accéder</a>
         </div>
       </div>
+      </div>
+
+
+
+          </div>
+        <!--/First row-->
+
+      </section>
+      <!--Section: Not enough-->
+
+      <hr class="mb-5">
+
+      <!--Section: More-->
+      <section>
+
+        <h2 class="my-5 h3 text-center">Et encore plus</h2>
+
+        <!--First row-->
+        <div class="row features-small mt-5 wow fadeIn">
+
+          <!--Grid column-->
+          <div class="col-xl-3 col-lg-6">
+            <!--Grid row-->
+            <div class="row">
+              <div class="col-2">
+                <i class="fab fa-firefox fa-2x mb-1 indigo-text" aria-hidden="true"></i>
+              </div>
+              <div class="col-10 mb-2 pl-3">
+                <h5 class="feature-title font-bold mb-1">Présentation portail</h5>
+                <p class="grey-text mt-2">Chrome, Firefox, IE, Safari, Opera, Microsoft Edge - MDB loves all browsers; all browsers love MDB.
+                </p>
+              </div>
+            </div>
+            <!--/Grid row-->
+          </div>
+          <!--/Grid column-->
+
+          <!--Grid column-->
+          <div class="col-xl-3 col-lg-6">
+            <!--Grid row-->
+            <div class="row">
+              <div class="col-2">
+                <i class="fas fa-level-up-alt fa-2x mb-1 indigo-text" aria-hidden="true"></i>
+              </div>
+              <div class="col-10 mb-2">
+                <h5 class="feature-title font-bold mb-1">FAQ</h5>
+                <p class="grey-text mt-2">MDB becomes better every month. We love the project and enhance as much as possible.
+                </p>
+              </div>
+            </div>
+            <!--/Grid row-->
+          </div>
+          <!--/Grid column-->
+
+          <!--Grid column-->
+          <div class="col-xl-3 col-lg-6">
+            <!--Grid row-->
+            <div class="row">
+              <div class="col-2">
+                <i class="fas fa-comments fa-2x mb-1 indigo-text" aria-hidden="true"></i>
+              </div>
+              <div class="col-10 mb-2">
+                <h5 class="feature-title font-bold mb-1">Contacts</h5>
+                <p class="grey-text mt-2">Our society grows day by day. Visit our forum and check how it is to be a part of our family.
+                </p>
+              </div>
+            </div>
+            <!--/Grid row-->
+          </div>
+          <!--/Grid column-->
+
+          <!--Grid column-->
+          <div class="col-xl-3 col-lg-6">
+            <!--Grid row-->
+            <div class="row">
+              <div class="col-2">
+                <i class="fas fa-home fa-2x mb-1 indigo-text" aria-hidden="true"></i>
+              </div>
+              <div class="col-10 mb-2">
+                <h5 class="feature-title font-bold mb-1">Orbus Paiement</h5>
+                <p class="grey-text mt-2">MDB is integrated with newest jQuery. Therefore you can use all the latest features which come along with
+                  it.
+                </p>
+              </div>
+            </div>
+            <!--/Grid row-->
+          </div>
+          <!--/Grid column-->
+
+        </div>
+        <!--/First row-->
+
+        <!--/Second row-->
+
+      </section>
+      <!--Section: More-->
+
     </div>
+  </main>
+  <!--Main layout-->
+
+  <!--Footer-->
+  <footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+    <!--Call to action-->
+   
+    <!--/.Call to action-->
+
+    <hr class="my-4">
+
+    <!-- Social icons -->
+    <div class="pb-4">
+      <a href="https://www.facebook.com/mdbootstrap" target="_blank">
+        <i class="fab fa-facebook-f mr-3"></i>
+      </a>
+
+      <a href="https://twitter.com/MDBootstrap" target="_blank">
+        <i class="fab fa-twitter mr-3"></i>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
+        <i class="fab fa-youtube mr-3"></i>
+      </a>
+
+      <a href="https://plus.google.com/u/0/b/107863090883699620484" target="_blank">
+        <i class="fab fa-google-plus-g mr-3"></i>
+      </a>
+
+      <a href="https://dribbble.com/mdbootstrap" target="_blank">
+        <i class="fab fa-dribbble mr-3"></i>
+      </a>
+
+      <a href="https://pinterest.com/mdbootstrap" target="_blank">
+        <i class="fab fa-pinterest mr-3"></i>
+      </a>
+
+      <a href="https://github.com/mdbootstrap/bootstrap-material-design" target="_blank">
+        <i class="fab fa-github mr-3"></i>
+      </a>
+
+      <a href="http://codepen.io/mdbootstrap/" target="_blank">
+        <i class="fab fa-codepen mr-3"></i>
+      </a>
+    </div>
+    <!-- Social icons -->
+
+    <!--Copyright-->
+    <div class="footer-copyright py-3">
+      © 2020 Copyright:
+      <a href="" target="_blank"> Gainde 2000 </a>
+    </div>
+    <!--/.Copyright-->
+
   </footer>
+  <!--/.Footer-->
 
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js" th:src="@{vendor/jquery/jquery.min.js}"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"  th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="js1/jquery-3.4.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js1/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js1/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js1/mdb.min.js"></script>
+      <!-- Initializations -->
+    <script type="text/javascript">
+    // Animations initialization
+    new WOW().init();
+  </script>
 </body>
+
 </html>

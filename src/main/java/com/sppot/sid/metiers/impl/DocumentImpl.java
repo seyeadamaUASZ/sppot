@@ -27,12 +27,7 @@ public class DocumentImpl  implements IDocument{
 		return documentDao.save(document);
 	}
 
-	@Override
-	public List<Document> listDocumentByKey(String motcles) {
-		// TODO Auto-generated method stub
-		return documentDao.listDocumentByKey(motcles);
-	}
-
+	
 	@Override
 	public Document updateDocument(Long id, Document doc) {
 		// TODO Auto-generated method stub
@@ -45,5 +40,33 @@ public class DocumentImpl  implements IDocument{
 		// TODO Auto-generated method stub
 		return documentDao.findById(id).get();
 	}
+
+	@Override
+	public Integer compteDocuments() {
+		// TODO Auto-generated method stub
+		return documentDao.countDocuments();
+	}
+
+	@Override
+	public List<Document> listeDocumentsarchives() {
+		// TODO Auto-generated method stub
+		return documentDao.listedocumentsarchives();
+	}
+
+	@Override
+	public List<Document> listeDocumentPublie(Long id) {
+		// TODO Auto-generated method stub
+		return documentDao.listDocumentspublies(id);
+	}
+
+	@Override
+	public List<Document> listDocumentsActualites(Long id) {
+		// TODO Auto-generated method stub
+		return documentDao.listDocactualites(id);
+	}
+
+	
+
+	
 
 }

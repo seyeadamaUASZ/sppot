@@ -9,5 +9,6 @@ public interface ICategorieDocument {
 	public List<CategorieDocument> listCategories();
 	public CategorieDocument addcategorie(CategorieDocument categorieDocument);
 	
+	public Integer compteCategories();
 
 }

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Les documents archivés</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css1/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css1/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css1/style.min.css" rel="stylesheet">
+    <!-- Datatables -->
+    
+    <link href="vendor1/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="vendor1/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="vendor1/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="vendor1/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="vendor1/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    
+    
+    <style type="text/css">
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 60vh;
+      }
+
+      @media (max-width: 740px) {
+        html,
+        body,
+        header,
+        .carousel {
+          height: 100vh;
+        }
+      }
+
+      @media (min-width: 800px) and (max-width: 850px) {
+        html,
+        body,
+        header,
+        .carousel {
+          height: 100vh;
+        }
+      }
+
+      @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+    </style>
+    
+</head>
+<body>
+<!-- Navigation -->
+
+  <!-- Navbar -->
+  <nav class="navbar fixed-top navbar-expand-lg scrolling-navbar" style="background-color: white;">
+    <div class="container">
+
+      <!-- Brand -->
+      <a class="navbar-brand" href="#" target="_blank">
+        <img src="img/gainde.jpg" width="50" height="50" alt="" class="rounded-circle">
+         <span style="color:black; font-weight:bold;">SPPO-T</span>
+      </a>
+
+      <!-- Collapse -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!-- Left -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" th:href="@{/}">
+              <span style="color:black; font-weight:bold;">Accueil</span>
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          
+           <li class="nav-item" th:if="${logged}">
+            <a href="https://indic123.web.app/home" class="nav-link" target="_blank">
+             <span style="color:black; font-weight:bold;">Monitoring des performances</span>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
+            <span style="color:black; font-weight:bold;">A propos de Orbus</span>
+            </a>
+          </li>
+
+        </ul>
+
+        <!-- Right -->
+        <ul class="navbar-nav nav-flex-icons">   
+          <li class="nav-item">
+            <a th:href="@{/login}" class="btn btn-primary btn-sm">
+              <i class="fab fa-sign-in"></i>Connexion
+            </a>
+          </li>
+          
+          <li class="nav-item" th:if="${logged}">
+            <a th:href="@{/logout}" class="btn btn-danger btn-sm">
+             <span style="color:white;"> Déconnexion</span>
+            </a>
+          </li>
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  
+  <!--Carousel Wrapper-->
+  <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+      <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+    </ol>
+    <!--/.Indicators-->
+
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+
+      <!--First slide-->
+      <div class="carousel-item active">
+        <div class="view" style="background-image: url('img/financial.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            <!-- Content -->
+            <div class="text-center mx-5 wow fadeIn" style="color:black;">
+              <h1 class="mb-4">
+                <strong>SPPO-T</strong>
+              </h1>
+              <p class="mb-4 d-none d-md-block">
+                <marquee><strong>Suivi des Performances et des Publications de Orbus-Temps réel</strong></marquee> 
+              </p>
+
+              <!--<a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start free tutorial
+                <i class="fas fa-graduation-cap ml-2"></i>
+              </a>-->
+              <form th:action="@{/checkresult}" method="get">
+              <div class="input-group no-border">
+                <input type="text" value=""  name="motcles" class="form-control" placeholder="Mot clés...">
+                <button type="submit" class="btn btn-primary btn-sm">
+                  <i class="fas fa-search"></i> chercher
+                  <div class="ripple-container"></div>
+                </button>
+              </div>
+            </form>
+            </div>
+            <!-- Content -->
+
+          </div>
+          <!-- Mask & flexbox options-->
+
+        </div>
+      </div>
+      <!--/First slide-->
+
+      <!--Second slide-->
+      <!--<div class="carousel-item">
+        <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/94.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+
+          <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+
+            <div class="text-center white-text mx-5 wow fadeIn">
+              <h1 class="mb-4">
+                <strong>Learn Bootstrap 4 with MDB</strong>
+              </h1>
+
+              <p>
+                <strong>Best & free guide of responsive web design</strong>
+              </p>
+
+              <p class="mb-4 d-none d-md-block">
+                <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and written versions
+                  available. Create your own, stunning website.</strong>
+              </p>
+
+              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start free tutorial
+                <i class="fas fa-graduation-cap ml-2"></i>
+              </a>
+            </div>
+
+
+          </div>
+
+
+        </div>
+      </div>-->
+      <!--/Second slide-->
+
+      <!--Third slide-->
+      <!--<div class="carousel-item">
+        <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/92.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+
+          <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+
+            <div class="text-center white-text mx-5 wow fadeIn">
+              <h1 class="mb-4">
+                <strong>Learn Bootstrap 4 with MDB</strong>
+              </h1>
+
+              <p>
+                <strong>Best & free guide of responsive web design</strong>
+              </p>
+
+              <p class="mb-4 d-none d-md-block">
+                <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and written versions
+                  available. Create your own, stunning website.</strong>
+              </p>
+
+              <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start free tutorial
+                <i class="fas fa-graduation-cap ml-2"></i>
+              </a>
+            </div>
+
+
+          </div>
+
+
+        </div>
+      </div>-->
+      <!--/Third slide-->
+
+    </div>
+
+    <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+
+
+  </div>
+  
+  
+  <div class="right_col" role="main">
+          <div class="">
+            <!-- <div class="page-title">
+              <div class="title_left">
+                <h3>Projects <small>Listing design</small></h3>
+              </div>
+
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5   form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-secondary" type="button">Go!</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+            
+            <div class="clearfix"></div>
+            <br>
+
+            <div class="row">
+            
+              <div class="col-md-12">
+                <div class="panel">
+                  <div class="panel-heading" style="background-color:#6495ED;">
+                    <h2 style="text-align:center; font-weight:bold;">Liste des documents archivés</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                     <!--  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a> 
+                      </li>-->
+                      <!-- <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Settings 1</a>
+                            <a class="dropdown-item" href="#">Settings 2</a>
+                          </div>
+                      </li> -->
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="panel-body">
+
+                    <!-- start project list -->
+                    <table   class="table table-striped table-bordered">
+                      <thead style="color:black;">
+                        <tr>
+                            <th>Nom fichier</th>
+                            <th>Date de publication</th>
+                            <th>Categorie</th>
+                            <th>liens</th>
+                        </tr>
+                      </thead>
+                      <tbody style="color:black;">
+                        <tr th:each="d: ${documents}" style="color:black;">
+                         <td th:text="${d.fileName}"></td>
+                         <td th:text="${d.dateFile}"></td>
+                         <td th:text="${d.categorieDocument.namecategorie}"></td>
+                         <td> <a th:href="@{fichierPdf(id=${d.id})}" class="" target="_blank"> <img src="img/pdf.png" width="60" height="60"/> </a> </td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                    <!-- end project list -->
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+    <!-- jQuery -->
+    <script src="vendor1/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+   <script src="vendor1/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- FastClick -->
+    <script src="vendor1/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="vendor1/nprogress/nprogress.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="vendor1/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    
+    <script src="vendor1/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="vendor1/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="vendor1/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="vendor1/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="vendor1/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="vendor1/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="vendor1/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="vendor1/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="vendor1/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="vendor1/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="vendor1/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="vendor1/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="vendor1/jszip/dist/jszip.min.js"></script>
+    <script src="vendor1/pdfmake/build/pdfmake.min.js"></script>
+    <script src="vendor1/pdfmake/build/vfs_fonts.js"></script>
+     
+
+</body>
+</html>

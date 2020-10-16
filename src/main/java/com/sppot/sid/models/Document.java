@@ -18,7 +18,27 @@ public class Document {
 	private String filedownloadURI;
 	private Date dateFile;
 	private String motcles;
+	private boolean statusdoc;
+	private String status;
 	
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+	public boolean isStatusdoc() {
+		return statusdoc;
+	}
+
+
+	public void setStatusdoc(boolean statusdoc) {
+		this.statusdoc = statusdoc;
+	}
 	@ManyToOne
 	private CategorieDocument categorieDocument;
 	

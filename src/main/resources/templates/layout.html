@@ -57,7 +57,7 @@
               </div>
               <div class="profile_info">
                 <span>Bienvenue,</span>
-                <h2>Adama SEYE</h2>
+                <h2> <label th:text="${user.prenom +' '+user.nom}"></label> </h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -79,12 +79,12 @@
                     <ul class="nav child_menu">
                       <li><a th:href="@{/document}">Gestion des documents</a></li>
                       <li><a th:href="@{/categorie}">Gestion des catégories de document</a></li>
-                      <li><a href="form_advanced.html">Suivi performance à temps réel</a></li>
+                      
                     </ul>
                   </li>
                   <li><a><i class="fa fa-desktop"></i> Gestion des actualités <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="general_elements.html">Gestion des actualités</a></li>
+                      <li><a th:href="@{/actualitead}">Gestion des actualités</a></li>
                       <li><a href="media_gallery.html">Liste des catégories</a></li>
                     </ul>
                   </li>
@@ -137,7 +137,7 @@
               <ul class=" navbar-right">
                 <li class="nav-item dropdown open" style="padding-left: 15px;">
                   <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                    <img src="img/user.jpg" alt="">Adama SEYE
+                    <img src="img/user.jpg" alt=""> <label th:text="${user.prenom +' '+user.nom}"></label>
                   </a>
                   <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item"  href="javascript:;"> Profile</a>
