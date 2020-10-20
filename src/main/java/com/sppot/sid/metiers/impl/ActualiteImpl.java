@@ -33,4 +33,11 @@ public class ActualiteImpl implements IActualite{
 		return iactu.findById(id).get();
 	}
 
+	@Override
+	public Actualite updateActualite(Long id, Actualite actu) {
+		// TODO Auto-generated method stub
+		actu.setId(id);
+		return iactu.saveAndFlush(actu);
+	}
+
 }

@@ -8,5 +8,6 @@ public interface IActualite {
 	public Actualite addActualite(Actualite actualite);
 	public List<Actualite> listeActualites();
 	public Actualite getActu(Long id);
+	public Actualite updateActualite(Long id,Actualite actu);
 
 }

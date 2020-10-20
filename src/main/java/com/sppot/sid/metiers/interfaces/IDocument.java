@@ -18,6 +18,6 @@ public interface IDocument {
 	
 	public List<Document> listeDocumentPublie(Long id);
 	
-	public List<Document> listDocumentsActualites(Long id);
+	public List<Document> listDocumentsActualites(String nameCategorie);
 
 }

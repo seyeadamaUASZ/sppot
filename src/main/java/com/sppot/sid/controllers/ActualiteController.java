@@ -1,5 +1,7 @@
 package com.sppot.sid.controllers;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sppot.sid.dao.ActualiteDao;
 import com.sppot.sid.dao.TypeActualiteDao;
 import com.sppot.sid.metiers.interfaces.IActualite;
 import com.sppot.sid.metiers.interfaces.IDocument;
@@ -36,8 +39,7 @@ public class ActualiteController {
   private IUser iuser;
   
 	@Autowired
-	private IDocument idoc;	
-	
+  private IDocument idoc;	
 	
 	
   
@@ -73,9 +75,54 @@ public class ActualiteController {
 	
 	@GetMapping("/actualites")
 	public String actualites(Model model) {
-		List<Document> documents = idoc.listDocumentsActualites(5L);
+		List<Document> documents = idoc.listDocumentsActualites("Actualités");
+		List<Actualite> actualites = listActualites();
 		model.addAttribute("documents", documents);
+		model.addAttribute("actualites", filtering(actualites));
 		return "actualites";
+	}
+	
+	
+	public List<Actualite> listActualites(){
+		List<Actualite> actualites = iactu.listeActualites();
+		List<Actualite> actus = new ArrayList<Actualite>();
+		for(Actualite ac:actualites) {
+		 SimpleDateFormat stdFormat = new SimpleDateFormat("yyyy-MM-dd");
+		 String d4 = stdFormat.format(ac.getDatedebut());
+		 String d5 = stdFormat.format(ac.getDatefin());
+		 //condition
+		 if(d5.compareTo(d4)>0) {
+			 ac.setStatus("Non archivé");
+			 ac.setStatusdoc(false);
+			 iactu.updateActualite(ac.getId(), ac);
+			
+		 }
+		 if(d5.compareTo(d4)<0) {
+			 ac.setStatus("Archivé");
+			 ac.setStatusdoc(true);
+			 iactu.updateActualite(ac.getId(), ac);
+		 }
+		 actus.add(ac);
+		}
+		return actus;
+	}
+	
+	
+	public List<Actualite> filtering(List<Actualite> actus){
+		List<Actualite> actufiltrees = new ArrayList<Actualite>();
+		for(Actualite ac:actus) {
+			if(! ac.isStatusdoc()) {
+				actufiltrees.add(ac);
+			}
+		}
+		return actufiltrees;
+	}
+	
+	@GetMapping("/actuas")
+	@ResponseBody
+	public List<Actualite> listactusNonarchivees(){
+		List<Actualite> actualites = listActualites();
+		return filtering(actualites);
 	}
 	
 }

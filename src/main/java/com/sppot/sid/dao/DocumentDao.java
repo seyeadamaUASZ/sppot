@@ -22,6 +22,6 @@ public interface DocumentDao extends JpaRepository<Document, Long> {
 	@Query("select d from Document d , CategorieDocument ca where d.categorieDocument.id = ca.id and ca.id=:id")
 	public List<Document> listDocumentspublies(@Param("id")Long id);
 	
-	@Query("select d from Document d, CategorieDocument ca where d.categorieDocument.id=ca.id and ca.id=:id")
-	public List<Document> listDocactualites(@Param("id")Long id);
+	@Query("select d from Document d, CategorieDocument ca where d.categorieDocument.id=ca.id and ca.namecategorie=:namecategorie")
+	public List<Document> listDocactualites(@Param("namecategorie")String namecategorie);
 }

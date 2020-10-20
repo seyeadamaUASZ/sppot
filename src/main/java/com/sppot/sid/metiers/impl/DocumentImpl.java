@@ -60,11 +60,14 @@ public class DocumentImpl  implements IDocument{
 	}
 
 	@Override
-	public List<Document> listDocumentsActualites(Long id) {
+	public List<Document> listDocumentsActualites(String nameCategorie) {
 		// TODO Auto-generated method stub
-		return documentDao.listDocactualites(id);
+		return documentDao.listDocactualites(nameCategorie);
 	}
 
+	
+
+	
 	
 
 	

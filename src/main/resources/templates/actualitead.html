@@ -143,7 +143,7 @@
 						<div class="item form-group">
 							<label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Description</label>
 							<div class="col-md-6 col-sm-6 ">
-								<textarea rows="" cols="" class="form-control" name="description"></textarea>
+								<textarea rows="" cols="" class="form-control" id="description" name="description"></textarea>
 							</div>
 						</div>
 						
@@ -196,12 +196,12 @@
            var niveau =selectElmt.options[selectElmt.selectedIndex].text;
            console.log(niveau)
            $('.myForm #id').val(doc.id)
+           $('.myForm #titre').val(doc.titre)
            $('.myForm #motcles').val(doc.motcles)
-           $('.myForm #idc').val(doc.categorieDocument.id)
-           //$('.myForm #statusdoc').val(doc.statusdoc) 
-           //$('.myForm #statusdoc').textContent = niveau;
-           console.log($('.myForm #statusdoc').text())
-           document.getElementById("file1").textContent=doc.fileName;
+           $('.myForm #description').val(doc.description)
+           $('.myForm #datefin').val(doc.datefin) 
+           $('.myForm #datedebut').val(doc.datedebut) ;
+           
           
         
            })
